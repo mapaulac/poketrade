@@ -1,0 +1,13 @@
+.mainContainer{
+  height: 800px;
+  padding-top: 50px;
+  width:100%;
+  text-align:center;
+}
+
+.container{
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  margin:1%;
+}

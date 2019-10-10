@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title> Pokemon Go Meetup </title>
+		<link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {});
+			function successCallback(currentPosition) {
+				var lat = currentPosition.coords.latitude,
+				lon = currentPosition.coords.longitude;
+				var point = {lat: lat, lon: lon};
+				document.getElementById("lat").value = lat;
+				document.getElementById("lon").value = lon;
+				console.log(document.getElementById("lat").value);
+				console.log(document.getElementById("lon").value);
+				myCoord = point;
+				console.log(myCoord);
+			}
+			function errorCallback(e) {
+				// var mapElem = document.getElementById('map');
+				// mapElem.innerHTML = e;
+			}
+		</script>
+	</head>
+
+  <body>
+		<div class = "back"> </div>
+
+			<div id = "heading">
+				<h1 id = "title"> Welcome to the Pokemon Go Trade Database </h1>
+				<p class = "formText"> Simply create an account to get started </p>
+			</div>
+
+			<div id = "formform">
+		    <form action="/datasub" method="post">
+
+					<input id="lat" type="hidden" name="lat" value="">
+					<input id="lon" type="hidden" name="lon" value="">
+			    <input type="text" name="thetext" value="Username">
+			    <input type="text" name="thetext2" value="Password">
+					<input type="text" name="thetext3" value="Contact details">
+
+					<p class = "formText"> What pokemon are you looking for?</p>
+					<input type="text" name="pokename1" id="name">
+					<input type="text" name="pokename2" id="name2">
+					<input type="text" name="pokename3" id="name3">
+
+					<p class = "formText"> What pokemon do you want to give away?</p>
+					<input type="text" name="pokename4" id="name4">
+					<input type="text" name="pokename5" id="name5">
+					<input type="text" name="pokename6" id="name6">
+
+			    <input type="submit" name="submit" value="Submit">
+			 </form>
+
+
+			 <!-- <form method="GET" action="/search">
+				 <input type="text" name="usersearch">
+				 <input type="submit" value="search">
+			 </form> -->
+	 </div>
+
+  </body>

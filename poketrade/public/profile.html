@@ -1,0 +1,309 @@
+<html>
+	<head>
+		<link href="style3.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+		<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type = "text/javascript">
+			$(document).ready(function(){
+				console.log("running javascript");
+				console.log('<%=alldata[alldata.length-1].username%>'); //database
+				//setting variables to initialize current pokemon
+				//using form - database: alldata[0].pokemon1
+				var currentName1 = "<%=alldata[alldata.length-1].pokemon1%>";
+				var currentName2 = "<%=alldata[alldata.length-1].pokemon2%>";
+				var currentName3 = "<%=alldata[alldata.length-1].pokemon3%>";
+				var currentName4 = "<%=alldata[alldata.length-1].pokemon4%>";
+				var currentName5 = "<%=alldata[alldata.length-1].pokemon5%>";
+				var currentName6 = "<%=alldata[alldata.length-1].pokemon6%>";
+				var id = "<%=alldata[alldata.length-1]._id%>";
+				$('#id').val(id);
+
+				$.ajax({
+					// console.log("<%=alldata[0].pokemon1%>");
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName1,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig1 = data.sprites.front_default;
+						$('#pokemonName').html(currentName1);
+						$('#pokemonImg').attr('src',imageOrig1);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$.ajax({
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName2,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig2 = data.sprites.front_default;
+						$('#pokemonName2').html(currentName2);
+						$('#pokemonImg2').attr('src',imageOrig2);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$.ajax({
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName3,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig3 = data.sprites.front_default;
+						$('#pokemonName3').html(currentName3);
+						$('#pokemonImg3').attr('src',imageOrig3);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$.ajax({
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName4,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig4 = data.sprites.front_default;
+						$('#pokemonName4').html(currentName4);
+						$('#pokemonImg4').attr('src',imageOrig4);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$.ajax({
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName5,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig5 = data.sprites.front_default;
+						$('#pokemonName5').html(currentName5);
+						$('#pokemonImg5').attr('src',imageOrig5);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$.ajax({
+					url: "https://pokeapi.co/api/v2/pokemon/" + currentName6,
+					dataType: 'json',
+					success: function(data) {
+						var imageOrig6 = data.sprites.front_default;
+						$('#pokemonName6').html(currentName6);
+						$('#pokemonImg6').attr('src',imageOrig6);
+					},
+					error: function() {
+						alert("Please enter a valid Pokemon!");
+					}
+				});
+
+				$('#submit').click(
+					function() {
+						console.log('clicked');
+						var name = $('#name').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name,
+        		  dataType: 'json',
+        		  success: function(data) {
+								var image = data.sprites.front_default;
+								$('#pokemonName').html(name);
+								console.log(name);
+								$('#pokemonImg').attr('src',image);
+							},
+							error: function() {
+	        			alert("Please enter a valid Pokemon!");
+        		  }
+						});
+					}
+				);
+
+				$('#submit2').click(
+					function() {
+						console.log('clicked');
+						var name2 = $('#name2').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name2,
+							dataType: 'json',
+							success: function(data) {
+								var image2 = data.sprites.front_default;
+								$('#pokemonName2').html(name2);
+								console.log(name2);
+								$('#pokemonImg2').attr('src',image2);
+							},
+							error: function() {
+								alert("Please enter a valid Pokemon!");
+							}
+						});
+					}
+				);
+
+				$('#submit3').click(
+					function() {
+						console.log('clicked');
+						var name3 = $('#name3').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name3,
+							dataType: 'json',
+							success: function(data) {
+								var image3 = data.sprites.front_default;
+								$('#pokemonName3').html(name3);
+								console.log(name3);
+								$('#pokemonImg3').attr('src',image3);
+							},
+							error: function() {
+								alert("Please enter a valid Pokemon!");
+							}
+						});
+					}
+				);
+
+				$('#submit4').click(
+					function() {
+						console.log('clicked');
+						var name4 = $('#name4').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name4,
+							dataType: 'json',
+							success: function(data) {
+								var image4 = data.sprites.front_default;
+								$('#pokemonName4').html(name4);
+								console.log(name4);
+								$('#pokemonImg4').attr('src',image4);
+							},
+							error: function() {
+								alert("Please enter a valid Pokemon!");
+							}
+						});
+					}
+				);
+
+				$('#submit5').click(
+					function() {
+						console.log('clicked');
+						var name5 = $('#name5').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name5,
+							dataType: 'json',
+							success: function(data) {
+								var image5 = data.sprites.front_default;
+								$('#pokemonName5').html(name5);
+								console.log(name5);
+								$('#pokemonImg5').attr('src',image5);
+							},
+							error: function() {
+								alert("Please enter a valid Pokemon!");
+							}
+						});
+					}
+				);
+
+				$('#submit6').click(
+					function() {
+						console.log('clicked');
+						var name6 = $('#name6').val();
+						$.ajax({
+							url: "https://pokeapi.co/api/v2/pokemon/" + name6,
+							dataType: 'json',
+							success: function(data) {
+								var image6 = data.sprites.front_default;
+								$('#pokemonName6').html(name6);
+								console.log(name6);
+								$('#pokemonImg6').attr('src',image6);
+							},
+							error: function() {
+								alert("Please enter a valid Pokemon!");
+							}
+						});
+					}
+				);
+
+			});
+		</script>
+	</head>
+
+  <body>
+    <!-- <% for (let i = 0; i < alldata.length; i++) { %>
+			<p><%= i %></p><br/>
+			<p> Hi, <%= alldata[i].username %> </p>
+    <% } %> -->
+  <h1 id = "profileTitle"> Hi, <%=alldata[alldata.length-1].username%>? </h1>
+
+	<div class = "mainContainer" id = "discography">
+		<div id = "topContainer">
+			<h1> Pokemon you are looking for: </h1>
+			<div class="container">
+				<p class = "bodyText"> <b> Pokemon #1:  <span id = "pokemonName"></span></b> </p>
+				<img src = "" id = "pokemonImg" height="150px" width = "150px">
+				<form action="/datasub" method="post">
+					<input type="text" name="pokename1" id="name">
+					<input type="hidden" name="id" id="id" value="">
+					<input type="submit" name="button" id="submit" value="Choose">
+				</form>
+
+			</div>
+			<div class="container">
+				<p class = "bodyText"> <b> Pokemon #2:  <span id = "pokemonName2"></span></b> </p>
+				<img src = "" id = "pokemonImg2" height="150px" width = "150px">
+				<form>
+					<input type="text" name="name" id="name3">
+					<input type="button" name="button" id="submit3" value="Choose">
+				</form>
+			</div>
+			<div class="container">
+				<p class = "bodyText"> <b> Pokemon #3:  <span id = "pokemonName3"></span></b> </p>
+				<img src = "" id = "pokemonImg3" height="150px" width = "150px">
+				<form>
+					<input type="text" name="name" id="name3">
+					<input type="button" name="button" id="submit3" value="Choose">
+				</form>
+			</div>
+		</div>
+		<h1> Pokemon you want to exchange: </h1>
+			<div>
+				<div class="container">
+					<p class = "bodyText"> <b> Pokemon #1:  <span id = "pokemonName4"></span></b> </p>
+					<img src = "" id = "pokemonImg4" height="150px" width = "150px">
+					<form>
+						<input type="text" name="name" id="name4">
+						<input type="button" name="button" id="submit4" value="Choose">
+					</form>
+				</div>
+				<div class="container">
+					<p class = "bodyText"> <b> Pokemon #2:  <span id = "pokemonName5"></span></b> </p>
+					<img src = "" id = "pokemonImg5" height="150px" width = "150px">
+					<form>
+						<input type="text" name="name" id="name5">
+						<input type="button" name="button" id="submit5" value="Choose">
+					</form>
+				</div>
+				<div class="container">
+					<p class = "bodyText"> <b> Pokemon #3:  <span id = "pokemonName6"></span></b> </p>
+					<img src = "" id = "pokemonImg6" height="150px" width = "150px">
+					<form>
+						<input type="text" name="name" id="name6">
+						<input type="button" name="button" id="submit6" value="Choose">
+					</form>
+				</div>
+			</div>
+	</div>
+
+	<div id = "links">
+		<a class = "link" href = "home.html">
+			<span style="font-size: 1.5em; color: black; text-align:center;">
+			<i class="fas fa-home"></i>
+		</span></a>
+
+		<a class = "link" href = "about.html"> <span id = "info" style="font-size: 1.5em; color:black;">
+			<i class="fas fa-info-circle"></i>
+		</span></a>
+
+		<a class = "link" href = "/profile"> <span id = "info" style="font-size: 1.5em; color:black;">
+			<i class="fas fa-user-circle"></i>
+		</span> </a>
+	</div>
+
+	</body>
+
+</html>

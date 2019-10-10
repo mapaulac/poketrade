@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style2.css">
+		<title> PokeTrade </title>
+		<link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Work+Sans:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			// Google Provided initMap function - Viewing Australia
+			var map;
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), {
+				  center: {lat: -34.397, lng: 150.644},
+				  zoom: 14
+				});
+
+
+				// Get Locations using JQuery AJAX function
+				$.ajax({
+					url: "/getlocations",
+					dataType: 'json',
+					success: function(data) {
+						console.log("from server",data);
+						var infowindow = new google.maps.InfoWindow();
+
+						for (var i = 0; i < data.length; i++) {
+							var marker = new google.maps.Marker({
+							  position: {"lat": Number(data[i].lat), "lng": Number(data[i].lon)},
+							  map: map,
+							  // title: 'You are here!'
+							});
+
+							google.maps.event.addListener(marker, 'click', (function(marker, i) {
+									return function() {
+										infowindow.setContent('<b> <h3>' + data[i].username + '</b></h3><i>' + data[i].contact + '</i><br> <b> Looking for: </b>' + data[i].pokemon1 + ', ' + data[i].pokemon2 + ', ' + data[i].pokemon3 + '<br>'+ '<b> Trading for: </b>' + data[i].pokemon4 + ', ' + data[i].pokemon5 + ', ' + data[i].pokemon6);
+										infowindow.open(map, marker);
+										if (map.zoom < 15){
+											map.setZoom(16);
+						          map.setCenter(marker.getPosition());
+										}
+									}
+								})(marker, i));
+						}
+							console.log(data[data.length-1].username);
+							map.setCenter({"lat": Number(data[data.length-1].lat), "lng": Number(data[data.length-1].lon)});
+							map.setZoom(3);
+					},
+					error: function() {
+						console.log("error");
+					}
+				});
+			}
+
+		</script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEM_6btpjmvt5RSW-zOEyzO2sfrv_kBjI&callback=initMap"
+		async defer></script>
+		<style>
+		  /* Always set the map height explicitly to define the size of the div
+		   * element that contains the map. */
+		  #map {
+			height: 80%;
+		  }
+		  /* Optional: Makes the sample page fill the window. */
+		  html, body {
+			  font-family: 'Montserrat', sans-serif;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+		  }
+		</style>
+    </head>
+	<body>
+		<h1 id = "mapTitle"> PokeTrade </h1>
+		<p id = "subTitle"> Find others near you! </p>
+		<div id="map"></div>
+
+		<div id = "links">
+			<a class = "link" href = "home.html">
+				<span style="font-size: 1.5em; color: black; text-align:center;">
+				<i class="fas fa-home"></i>
+			</span></a>
+
+			<a class = "link" href = "about.html"> <span id = "info" style="font-size: 1.5em; color:black;">
+				<i class="fas fa-info-circle"></i>
+			</span></a>
+
+			<a class = "link" href = "/profile"> <span id = "info" style="font-size: 1.5em; color:black;">
+				<i class="fas fa-user-circle"></i>
+			</span> </a>
+	</div>
+	</body>
+</html>
